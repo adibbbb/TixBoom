@@ -33,6 +33,7 @@ const kGap60 = Gap(60);
 const kGap100 = Gap(100);
 
 // Border Radius
+final kRadius6 = BorderRadius.circular(6);
 final kRadius8 = BorderRadius.circular(8);
 final kRadius10 = BorderRadius.circular(10);
 final kRadius12 = BorderRadius.circular(12);
@@ -41,8 +42,11 @@ final kRadius16 = BorderRadius.circular(16);
 // padding all
 const kPadd0 = EdgeInsets.zero;
 const kPadd8 = EdgeInsets.all(8);
+const kPadd10 = EdgeInsets.all(10);
+const kPadd12 = EdgeInsets.all(12);
 const kPadd16 = EdgeInsets.all(16);
 
 // Drop Shadow
 const bigShadow = Offset(10, 10);
 const smallShadow = Offset(5, 5);
+const extraSmallShadow = Offset(3, 3);

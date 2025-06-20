@@ -118,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
           CustomButton(
             text: 'Login',
             onPressed: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 SlidePageRoute(
                   page: const HomeView(),
@@ -165,7 +165,7 @@ class _LoginViewState extends State<LoginView> {
         kGap16,
         Flexible(
           child: CustomButtonIcon(
-            iconpath: AppIcons.icfacebook,
+            iconpath: AppIcons.icFacebook,
             onPressed: () {},
           ),
         ),

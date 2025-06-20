@@ -131,7 +131,7 @@ class _SignUpViewState extends State<SignUpView> {
         kGap16,
         Flexible(
           child: CustomButtonIcon(
-            iconpath: AppIcons.icfacebook,
+            iconpath: AppIcons.icFacebook,
             onPressed: () {},
           ),
         ),

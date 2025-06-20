@@ -36,6 +36,12 @@ class AppStyles {
   // ----------------------------------------------
   // Bold Section
   // ----------------------------------------------
+  static const TextStyle comfortaa10Bold = TextStyle(
+    fontWeight: WeightsApp.bold,
+    fontSize: 10,
+    color: Colors.black,
+  );
+
   static const TextStyle comfortaa12Bold = TextStyle(
     fontWeight: WeightsApp.bold,
     fontSize: 12,
