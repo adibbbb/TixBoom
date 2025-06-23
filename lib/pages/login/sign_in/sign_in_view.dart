@@ -3,7 +3,7 @@ import '../../../commons.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import '../../../app/extensions.dart';
-import '../../home/home_view.dart';
+import '../../home/pages/home_view.dart';
 import '../sign_up/sign_up_view.dart';
 
 class LoginView extends StatefulWidget {

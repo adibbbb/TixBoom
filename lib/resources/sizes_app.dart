@@ -6,6 +6,7 @@ const kEmptyWidget = SizedBox.shrink();
 
 // Gaps
 const kGap0 = Gap(0);
+const kGap2 = Gap(2);
 const kGap4 = Gap(4);
 const kGap5 = Gap(5);
 const kGap8 = Gap(8);
@@ -33,6 +34,7 @@ const kGap60 = Gap(60);
 const kGap100 = Gap(100);
 
 // Border Radius
+final kRadius4 = BorderRadius.circular(4);
 final kRadius6 = BorderRadius.circular(6);
 final kRadius8 = BorderRadius.circular(8);
 final kRadius10 = BorderRadius.circular(10);
@@ -41,6 +43,7 @@ final kRadius16 = BorderRadius.circular(16);
 
 // padding all
 const kPadd0 = EdgeInsets.zero;
+const kPadd6 = EdgeInsets.all(6);
 const kPadd8 = EdgeInsets.all(8);
 const kPadd10 = EdgeInsets.all(10);
 const kPadd12 = EdgeInsets.all(12);

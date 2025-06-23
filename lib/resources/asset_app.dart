@@ -5,6 +5,7 @@ class AppImages {
   static const String imglogoTixBoom = '$imagePath/img-logo.png';
   static const String imgDummyPhoto = '$imagePath/img-dummy-photo.png';
   static const String imgDummyPhoto2 = '$imagePath/img-dummy-photo-2.png';
+  static const String imgBanner = '$imagePath/img-banner.png';
 }
 
 class AppIcons {
