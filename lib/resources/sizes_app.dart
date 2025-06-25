@@ -43,6 +43,7 @@ final kRadius16 = BorderRadius.circular(16);
 
 // padding all
 const kPadd0 = EdgeInsets.zero;
+const kPadd2 = EdgeInsets.all(2);
 const kPadd6 = EdgeInsets.all(6);
 const kPadd8 = EdgeInsets.all(8);
 const kPadd10 = EdgeInsets.all(10);

@@ -88,10 +88,10 @@ class DiskonCard extends StatelessWidget {
             ],
           ),
         ),
-        // kiri
+        // Kiri
         Positioned(
           top: 60,
-          left: 4,
+          left: 3, // Nilai tetap
           bottom: 60,
           child: Container(
             width: 15,
@@ -122,10 +122,10 @@ class DiskonCard extends StatelessWidget {
           ),
         ),
 
-        // kanan
+        // Kanan
         Positioned(
           top: 60,
-          right: 1,
+          right: 0, // Nilai tetap
           bottom: 60,
           child: Container(
             width: 15,

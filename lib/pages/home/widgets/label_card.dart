@@ -1,5 +1,30 @@
 import '../../../commons.dart';
 
+Container eventLabel(
+    {required String title,
+    TextStyle? textStyle = AppStyles.comfortaa10Bold,
+    Color? bgColor = AppColors.golden,
+    EdgeInsets? padding = kPadd6}) {
+  return Container(
+    padding: padding,
+    decoration: BoxDecoration(
+      color: bgColor,
+      borderRadius: kRadius4,
+      boxShadow: const [
+        BoxShadow(
+          offset: Offset(2, 2),
+        )
+      ],
+    ),
+    child: Flexible(
+      child: Text(
+        title,
+        style: textStyle,
+      ),
+    ),
+  );
+}
+
 Column labelCard(
     {required String title,
     required String desc,

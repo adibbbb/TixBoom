@@ -9,6 +9,7 @@ import '../widgets/custom_scroll_horizontal_month.dart';
 import '../widgets/diskon_card.dart';
 import '../widgets/konser_card.dart';
 import '../widgets/label_card.dart';
+import '../widgets/news_card.dart';
 
 final List _dummyImages = [
   AppImages.imgDummyPhoto,
@@ -18,7 +19,7 @@ final List _dummyImages = [
 ];
 
 final List<Widget> konserCards = List.generate(
-  9,
+  8,
   (index) => const KonserCard(),
 );
 
@@ -39,67 +40,134 @@ class _HomeViewState extends State<HomeView> {
         context.unfocusKeyboard();
       },
       child: Scaffold(
-        appBar: _appBar(),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
-          child: Column(
-            children: [
-              // ----------------------------------------------
-              // Search Bar
-              // ----------------------------------------------
-              const CustomTextFormField(
-                prefixIcon: Icon(Icons.search),
-                hintText: 'Search',
-              ),
-              kGap12,
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+            child: Column(
+              children: [
+                _appBar(),
 
-              // ----------------------------------------------
-              // List Bulan
-              // ----------------------------------------------
-              Expanded(
-                child: CustomScrollHorizontalMonth(
-                  monthContents: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                kGap20,
+                // ----------------------------------------------
+                // Search Bar
+                // ----------------------------------------------
+                const CustomTextFormField(
+                  prefixIcon: Icon(Icons.search),
+                  hintText: 'Search',
+                ),
+                kGap12,
+
+                // ----------------------------------------------
+                // List Bulan
+                // ----------------------------------------------
+                Flexible(
+                  child: CustomScrollHorizontalMonth(
+                    monthContents: [
+                      Flexible(
+                        child: ListView(
                           children: [
-                            _heroBanner(),
-                            kGap12,
-                            labelCard(
-                              title: 'Recommend Event',
-                              desc: 'Pilih event yang ingin kamu datangi!',
-                              onTapSeeOther: () {},
-                            ),
-                            _recommendEvent(),
-                            kGap12,
-                            ClipRRect(
-                              borderRadius: kRadius12,
-                              child: Image.asset(AppImages.imgBanner),
-                            ),
-                            kGap12,
-                            const DiskonCard(),
-                            kGap12,
-                            const DiskonCard(),
-                            kGap20,
-                            labelCard(
-                              title: 'Boom News',
-                              desc: 'Update berita terbaru seputar music',
-                              onTapSeeOther: () {},
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _heroBanner(),
+                                kGap12,
+
+                                // ----------------------------------------------
+                                // rekomendasi event konser
+                                // ----------------------------------------------
+                                labelCard(
+                                  title: 'Recommend Event',
+                                  desc: 'Pilih event yang ingin kamu datangi!',
+                                  onTapSeeOther: () {},
+                                ),
+                                _recommendEvent(),
+                                kGap12,
+
+                                // ----------------------------------------------
+                                // Banner
+                                // ----------------------------------------------
+                                ClipRRect(
+                                  borderRadius: kRadius12,
+                                  child: Image.asset(AppImages.imgBanner),
+                                ),
+                                kGap20,
+
+                                // ----------------------------------------------
+                                // Diskon section
+                                // ----------------------------------------------
+                                ...List.generate(
+                                  2,
+                                  (index) {
+                                    return const Padding(
+                                      padding: EdgeInsets.only(bottom: 12),
+                                      child: DiskonCard(),
+                                    );
+                                  },
+                                ),
+                                kGap20,
+
+                                // ----------------------------------------------
+                                // Boom News
+                                // ----------------------------------------------
+                                labelCard(
+                                  title: 'Boom News',
+                                  desc: 'Update berita terbaru seputar music',
+                                  onTapSeeOther: () {},
+                                ),
+                                ...List.generate(
+                                  2,
+                                  (index) {
+                                    return const Padding(
+                                      padding: EdgeInsets.only(bottom: 8),
+                                      child: NewsCard(),
+                                    );
+                                  },
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ),
-                    ),
 
-                    // ----------------------------------------------
-                  ],
+                      // ----------------------------------------------
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  Row _appBar() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Image.asset(
+          width: 65,
+          height: 35,
+          AppImages.imglogoTixBoom,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+            decoration: BoxDecoration(
+              color: AppColors.lavender,
+              border: Border.all(color: AppColors.black),
+              borderRadius: kRadius6,
+              boxShadow: const [
+                BoxShadow(
+                  offset: extraSmallShadow,
+                ),
+              ],
+            ),
+            child: SvgPicture.asset(AppIcons.icNotification),
+          ),
+        ),
+      ],
     );
   }
 
@@ -205,39 +273,6 @@ class _HomeViewState extends State<HomeView> {
             paintStyle: PaintingStyle.fill,
           ),
         ),
-      ],
-    );
-  }
-
-  AppBar _appBar() {
-    return AppBar(
-      backgroundColor: AppColors.brokenWhite,
-      leadingWidth: 65 + 22,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 22),
-        child: Image.asset(
-          AppImages.imglogoTixBoom,
-        ),
-      ),
-      actions: [
-        GestureDetector(
-          onTap: () {},
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-            decoration: BoxDecoration(
-              color: AppColors.lavender,
-              border: Border.all(color: AppColors.black),
-              borderRadius: kRadius6,
-              boxShadow: const [
-                BoxShadow(
-                  offset: extraSmallShadow,
-                ),
-              ],
-            ),
-            child: SvgPicture.asset(AppIcons.icNotification),
-          ),
-        ),
-        kGap22
       ],
     );
   }
