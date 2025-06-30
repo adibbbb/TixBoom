@@ -60,76 +60,73 @@ class _HomeViewState extends State<HomeView> {
                 // ----------------------------------------------
                 // List Bulan
                 // ----------------------------------------------
-                Flexible(
+                Expanded(
                   child: CustomScrollHorizontalMonth(
                     monthContents: [
-                      Flexible(
-                        child: ListView(
+                      SingleChildScrollView(
+                        child: Column(
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _heroBanner(),
-                                kGap12,
+                            _heroBanner(),
+                            kGap12,
 
-                                // ----------------------------------------------
-                                // rekomendasi event konser
-                                // ----------------------------------------------
-                                labelCard(
-                                  title: 'Recommend Event',
-                                  desc: 'Pilih event yang ingin kamu datangi!',
-                                  onTapSeeOther: () {},
-                                ),
-                                _recommendEvent(),
-                                kGap12,
+                            // ----------------------------------------------
+                            // rekomendasi event konser
+                            // ----------------------------------------------
+                            labelCard(
+                              title: 'Recommend Event',
+                              desc: 'Pilih event yang ingin kamu datangi!',
+                              onTapSeeOther: () {},
+                            ),
+                            _recommendEvent(),
+                            kGap12,
 
-                                // ----------------------------------------------
-                                // Banner
-                                // ----------------------------------------------
-                                ClipRRect(
-                                  borderRadius: kRadius12,
-                                  child: Image.asset(AppImages.imgBanner),
-                                ),
-                                kGap20,
+                            // ----------------------------------------------
+                            // Banner
+                            // ----------------------------------------------
+                            ClipRRect(
+                              borderRadius: kRadius12,
+                              child: Image.asset(AppImages.imgBanner),
+                            ),
+                            kGap20,
 
-                                // ----------------------------------------------
-                                // Diskon section
-                                // ----------------------------------------------
-                                ...List.generate(
-                                  2,
-                                  (index) {
-                                    return const Padding(
-                                      padding: EdgeInsets.only(bottom: 12),
-                                      child: DiskonCard(),
-                                    );
-                                  },
-                                ),
-                                kGap20,
+                            // ----------------------------------------------
+                            // Diskon section
+                            // ----------------------------------------------
+                            ...List.generate(
+                              2,
+                              (index) {
+                                return const Padding(
+                                  padding: EdgeInsets.only(bottom: 12),
+                                  child: DiskonCard(),
+                                );
+                              },
+                            ),
+                            kGap20,
 
-                                // ----------------------------------------------
-                                // Boom News
-                                // ----------------------------------------------
-                                labelCard(
-                                  title: 'Boom News',
-                                  desc: 'Update berita terbaru seputar music',
-                                  onTapSeeOther: () {},
-                                ),
-                                ...List.generate(
-                                  2,
-                                  (index) {
-                                    return const Padding(
-                                      padding: EdgeInsets.only(bottom: 8),
-                                      child: NewsCard(),
-                                    );
-                                  },
-                                ),
-                              ],
+                            // ----------------------------------------------
+                            // Boom News
+                            // ----------------------------------------------
+                            labelCard(
+                              title: 'Boom News',
+                              desc: 'Update berita terbaru seputar music',
+                              onTapSeeOther: () {},
+                            ),
+                            ...List.generate(
+                              2,
+                              (index) {
+                                return const Padding(
+                                  padding: EdgeInsets.only(bottom: 8),
+                                  child: NewsCard(),
+                                );
+                              },
                             ),
                           ],
                         ),
                       ),
 
                       // ----------------------------------------------
+
+                      const Text('Juli')
                     ],
                   ),
                 ),
@@ -186,16 +183,18 @@ class _HomeViewState extends State<HomeView> {
             },
           ),
           items: [
-            for (int i = 0; i < (konserCards.length / 3).ceil(); i++)
+            // Per baris 2 item
+            for (int i = 0; i < (konserCards.length / 2).ceil(); i++)
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  for (int j = 0; j < 3; j++)
-                    if (i * 3 + j < konserCards.length)
+                  // Maksimal 2 item per baris
+                  for (int j = 0; j < 2; j++)
+                    if (i * 2 + j < konserCards.length)
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: konserCards[i * 3 + j],
+                          child: konserCards[i * 2 + j],
                         ),
                       ),
                 ],

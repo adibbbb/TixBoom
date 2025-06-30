@@ -51,6 +51,8 @@ class KonserCard extends StatelessWidget {
               children: [
                 Text(
                   'JKT 48 Summer Festival',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: AppStyles.comfortaa6Bold,
                 ),
                 kGap2,
@@ -61,6 +63,8 @@ class KonserCard extends StatelessWidget {
                 kGap2,
                 Text(
                   'Batam - Temenggung Abdul Jamal',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: AppStyles.comfortaa4Bold,
                 ),
               ],

@@ -17,20 +17,42 @@ class CustomScrollHorizontalMonth extends StatefulWidget {
 
 class _CustomScrollHorizontalMonthState
     extends State<CustomScrollHorizontalMonth> {
+  late final ScrollController scrlController;
+  final ValueNotifier<int> selectedIndex = ValueNotifier(0);
+
+  @override
+  void initState() {
+    super.initState();
+    scrlController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    scrlController.dispose();
+    selectedIndex.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final ScrollController scrlController = ScrollController();
-    final ValueNotifier<int> selectedIndex = ValueNotifier(0);
     final int currentMonth = DateTime.now().month;
     final int currentYear = DateTime.now().year;
 
-    // Hitung jumlah bulan yang akan ditampilkan (dari bulan saat ini hingga Desember)
-    final int monthsRemaining = 12 - currentMonth + 1;
-
-    // Fungsi untuk mendapatkan nama bulan
-    String getMonthName(int month) {
-      return DateFormat.MMMM().format(DateTime(currentYear, month));
-    }
+    // Hitung semua bulan
+    List<Map<String, dynamic>> months = List.generate(
+      12,
+      (index) {
+        final int month = (currentMonth + index - 1) % 12 + 1;
+        final int year = currentYear + (currentMonth + index - 1) ~/ 12;
+        return {
+          "name": index == 0
+              ? "Bulan Ini"
+              : DateFormat.MMMM().format(DateTime(year, month)),
+          "month": month,
+          "year": year,
+        };
+      },
+    );
 
     return Column(
       children: [
@@ -43,37 +65,29 @@ class _CustomScrollHorizontalMonthState
             valueListenable: selectedIndex,
             builder: (context, selectedIndexValue, _) {
               return ListView.separated(
-                itemCount: monthsRemaining,
-                shrinkWrap: true,
-                controller: scrlController,
                 clipBehavior: Clip.none,
+                controller: scrlController,
+                itemCount: months.length,
+                shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) => const SizedBox(width: 10),
                 itemBuilder: (context, index) {
-                  final int month = currentMonth + index;
                   final bool isSelected = selectedIndexValue == index;
-                  final bool isCurrentMonth = index == 0;
-
                   return InkWell(
-                    onTap: () {
-                      selectedIndex.value = index;
-                    },
+                    onTap: () => selectedIndex.value = index,
                     child: Container(
                       alignment: Alignment.center,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: isSelected
-                            ? AppColors.magenta
-                            : isCurrentMonth
-                                ? AppColors.lavender
-                                : AppColors.lavender,
+                        color:
+                            isSelected ? AppColors.magenta : AppColors.lavender,
                         borderRadius: BorderRadius.circular(6),
                         boxShadow: const [
                           BoxShadow(offset: extraSmallShadow),
                         ],
                       ),
                       child: Text(
-                        isCurrentMonth ? "Bulan Ini" : getMonthName(month),
+                        months[index]["name"],
                         style: AppStyles.comfortaa12Bold.copyWith(
                           color: AppColors.white,
                         ),
@@ -94,17 +108,14 @@ class _CustomScrollHorizontalMonthState
         ValueListenableBuilder<int>(
           valueListenable: selectedIndex,
           builder: (context, selectedIndexValue, _) {
-            return List.generate(
-              monthsRemaining,
-              (index) => index < widget.monthContents.length
-                  ? widget.monthContents[index]
+            return Expanded(
+              child: widget.monthContents.isNotEmpty &&
+                      selectedIndexValue < widget.monthContents.length
+                  ? widget.monthContents[selectedIndexValue]
                   : const Center(
-                      child: Text(
-                        'Konten tidak tersedia',
-                        style: AppStyles.comfortaa12Bold,
-                      ),
+                      child: Text('Konten tidak tersedia'),
                     ),
-            )[selectedIndexValue];
+            );
           },
         ),
       ],
