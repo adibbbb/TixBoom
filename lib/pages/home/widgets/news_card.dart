@@ -34,75 +34,75 @@ class NewsCard extends StatelessWidget {
             ),
           ),
           kGap8,
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // ----------------------------------------------
-                // title
-                // ----------------------------------------------
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        'Juicy Luicy bakal manggung lagi di batam untuk ke 3 kalinya',
-                        style: AppStyles.comfortaa10Bold,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // ----------------------------------------------
+              // title + label
+              // ----------------------------------------------
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Expanded(
+                    child: Text(
+                      'Juicy Luicy bakal manggung lagi di batam untuk ke 3 kalinya',
+                      style: AppStyles.comfortaa10Bold,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    kGap12,
-                    eventLabel(
-                      title: 'News',
-                      padding: kPadd2,
-                      textStyle: AppStyles.comfortaa8Bold.copyWith(
-                        color: AppColors.white,
-                      ),
+                  ),
+                  kGap8,
+                  eventLabel(
+                    title: 'News',
+                    padding: kPadd2,
+                    textStyle: AppStyles.comfortaa8Bold.copyWith(
+                      color: AppColors.white,
                     ),
-                  ],
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  ),
+                ],
+              ),
 
-                // ----------------------------------------------
-                // section like, watch dan upload
-                // ----------------------------------------------
-                const Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Icon(
-                          Icons.remove_red_eye_rounded,
-                          size: 10,
-                        ),
-                        kGap2,
-                        Text(
-                          '1k',
-                          style: AppStyles.comfortaa6Bold,
-                        ),
-                        kGap5,
-                        Icon(
-                          Icons.thumb_up_alt_rounded,
-                          size: 10,
-                        ),
-                        kGap2,
-                        Text(
-                          '46',
-                          style: AppStyles.comfortaa6Bold,
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    Text(
-                      '30 menit yang lalu',
-                      style: AppStyles.comfortaa6Bold,
-                    )
-                  ],
-                ),
-              ],
-            ),
+              kGap25,
+
+              // ----------------------------------------------
+              // section like, watch dan upload
+              // ----------------------------------------------
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Icon(
+                        Icons.remove_red_eye_rounded,
+                        size: 10,
+                      ),
+                      kGap2,
+                      Text(
+                        '1k',
+                        style: AppStyles.comfortaa6Bold,
+                      ),
+                      kGap5,
+                      Icon(
+                        Icons.thumb_up_alt_rounded,
+                        size: 10,
+                      ),
+                      kGap2,
+                      Text(
+                        '46',
+                        style: AppStyles.comfortaa6Bold,
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Text(
+                    '30 menit yang lalu',
+                    style: AppStyles.comfortaa6Bold,
+                  )
+                ],
+              ),
+            ],
           ),
         ],
       ),

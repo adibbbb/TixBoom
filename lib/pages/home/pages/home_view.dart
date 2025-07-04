@@ -80,18 +80,18 @@ class _HomeViewState extends State<HomeView> {
                             _recommendEvent(),
                             kGap12,
 
-                            // ----------------------------------------------
-                            // Banner
-                            // ----------------------------------------------
+                            // // ----------------------------------------------
+                            // // Banner
+                            // // ----------------------------------------------
                             ClipRRect(
                               borderRadius: kRadius12,
                               child: Image.asset(AppImages.imgBanner),
                             ),
                             kGap20,
 
-                            // ----------------------------------------------
-                            // Diskon section
-                            // ----------------------------------------------
+                            // // ----------------------------------------------
+                            // // Diskon section
+                            // // ----------------------------------------------
                             ...List.generate(
                               2,
                               (index) {
@@ -103,9 +103,9 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             kGap20,
 
-                            // ----------------------------------------------
-                            // Boom News
-                            // ----------------------------------------------
+                            // // ----------------------------------------------
+                            // // Boom News
+                            // // ----------------------------------------------
                             labelCard(
                               title: 'Boom News',
                               desc: 'Update berita terbaru seputar music',
@@ -174,6 +174,7 @@ class _HomeViewState extends State<HomeView> {
         CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
+            aspectRatio: 18 / 9,
             autoPlayInterval: const Duration(seconds: 4),
             viewportFraction: 1,
             onPageChanged: (index, reason) {

@@ -1,9 +1,13 @@
+import 'package:provider/provider.dart';
+import 'package:tixboom/app/finite_state.dart';
+import 'package:tixboom/provider/login_provider.dart';
+
 import '../../../app/custom_transition.dart';
 import '../../../commons.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import '../../../app/extensions.dart';
-import '../../home/pages/home_view.dart';
+
 import '../sign_up/sign_up_view.dart';
 
 class LoginView extends StatefulWidget {
@@ -16,6 +20,8 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -89,44 +95,55 @@ class _LoginViewState extends State<LoginView> {
     return Container(
       padding: kPadd16,
       decoration: bigborderStyle,
-      child: Column(
-        children: [
-          CustomTextFormField(
-            controller: emailController,
-            hintText: 'Email',
-            validateMode: AutovalidateMode.onUserInteraction,
-          ),
-          kGap20,
-          CustomTextFormFieldPassword(
-            controller: passwordController,
-            hintText: 'Password',
-            validateMode: AutovalidateMode.onUserInteraction,
-          ),
-          kGap12,
-          GestureDetector(
-            onTap: () {},
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                'Forgot password?',
-                style: AppStyles.comfortaa12Bold
-                    .copyWith(color: AppColors.lavender),
-              ),
-            ),
-          ),
-          kGap20,
-          CustomButton(
-            text: 'Login',
-            onPressed: () {
-              Navigator.push(
-                context,
-                SlidePageRoute(
-                  page: const HomeView(),
+      child: Consumer<LoginProvider>(
+        builder: (context, prov, _) {
+          var state = prov.state;
+          return Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CustomTextFormField(
+                  controller: emailController,
+                  hintText: 'Email',
                 ),
-              );
-            },
-          )
-        ],
+                kGap20,
+                CustomTextFormFieldPassword(
+                  controller: passwordController,
+                  hintText: 'Password',
+                ),
+                kGap12,
+                GestureDetector(
+                  onTap: () {},
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Forgot password?',
+                      style: AppStyles.comfortaa12Bold.copyWith(
+                        color: AppColors.lavender,
+                      ),
+                    ),
+                  ),
+                ),
+                kGap12,
+                CustomButton(
+                  text: isLoading(state) ? 'Loading...' : 'Login',
+                  onPressed: isLoading(state)
+                      ? null
+                      : () async {
+                          if (_formKey.currentState!.validate()) {
+                            await prov.login(
+                              emailController.text.trim(),
+                              passwordController.text.trim(),
+                              context,
+                            );
+                          }
+                        },
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
