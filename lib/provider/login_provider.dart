@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../app/custom_transition.dart';
 import '../app/error/failure.dart';
 import '../app/finite_state.dart';
 import '../pages/home/pages/home_view.dart';
+import '../pages/login/sign_in_view.dart';
 import '../services/login_service.dart';
+import '../services/shared_pref_services.dart';
 
 class LoginProvider with ChangeNotifier {
   Failure? failure;
@@ -25,7 +28,7 @@ class LoginProvider with ChangeNotifier {
         isSuccess = false;
         failure = fail; // Simpan detail error
         state = MyState.failed; // Ubah state jadi gagal
-        notifyListeners(); // Biar UI tahu & bisa tampilkan error
+        notifyListeners();
 
         //muncul dialog error ketika gagal login
         ScaffoldMessenger.of(context).showSnackBar(
@@ -35,22 +38,48 @@ class LoginProvider with ChangeNotifier {
           ),
         );
       },
-      (success) {
+      (success) async {
         isSuccess = true;
         token = success; // Simpan token dari API
         state = MyState.loaded; // Ubah state jadi sukses
-        notifyListeners(); // Biar UI tahu login sukses
+        notifyListeners();
+        final prefs = await SharedPreferencesServices.getInstance();
+        prefs.saveToken(success);
 
         // push halaman home
-        Navigator.pushReplacement(
-          context,
-          SlidePageRoute(
-            page: const HomeView(),
-          ),
-        );
+        if (context.mounted) {
+          Navigator.pushReplacement(
+            context,
+            SlidePageRoute(
+              page: const HomeView(),
+            ),
+          );
+        }
       },
     );
 
     return isSuccess;
+  }
+
+  Future<void> loadToken() async {
+    final prefs = await SharedPreferencesServices.getInstance();
+    token = prefs.readToken;
+    notifyListeners();
+  }
+
+  Future<void> logout(BuildContext context) async {
+    final prefs = await SharedPreferencesServices.getInstance();
+    await prefs.clearAll();
+
+    token = null;
+    state = MyState.initial;
+    notifyListeners();
+
+    if (context.mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginView()),
+      );
+    }
   }
 }

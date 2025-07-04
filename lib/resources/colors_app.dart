@@ -10,4 +10,6 @@ abstract class AppColors {
   static const Color golden = Color(0xffEFAE1A);
   static const Color mint = Color(0xff05DE99);
   static const Color magenta = Color(0xffEB0079);
+  static const Color shimmerBase = Color(0xFFF9F8F8);
+  static const Color shimmerHighlight = Color(0xFFE7E5E5);
 }

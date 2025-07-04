@@ -1,10 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:tixboom/app/custom_transition.dart';
 
 import '../../../app/extensions.dart';
 import '../../../commons.dart';
+import '../../../provider/login_provider.dart';
 import '../../../widgets/custom_text_form_field.dart';
+import '../../notifikasi/notifikasi_view.dart';
 import '../widgets/custom_scroll_horizontal_month.dart';
 import '../widgets/diskon_card.dart';
 import '../widgets/konser_card.dart';
@@ -92,15 +96,12 @@ class _HomeViewState extends State<HomeView> {
                             // // ----------------------------------------------
                             // // Diskon section
                             // // ----------------------------------------------
-                            ...List.generate(
-                              2,
-                              (index) {
-                                return const Padding(
-                                  padding: EdgeInsets.only(bottom: 12),
-                                  child: DiskonCard(),
-                                );
-                              },
-                            ),
+                            for (int i = 0; i < 2; i++)
+                              const Padding(
+                                padding: EdgeInsets.only(bottom: 12),
+                                child: DiskonCard(),
+                              ),
+
                             kGap20,
 
                             // // ----------------------------------------------
@@ -111,15 +112,12 @@ class _HomeViewState extends State<HomeView> {
                               desc: 'Update berita terbaru seputar music',
                               onTapSeeOther: () {},
                             ),
-                            ...List.generate(
-                              2,
-                              (index) {
-                                return const Padding(
-                                  padding: EdgeInsets.only(bottom: 8),
-                                  child: NewsCard(),
-                                );
-                              },
-                            ),
+
+                            for (int i = 0; i < 2; i++)
+                              const Padding(
+                                padding: EdgeInsets.only(bottom: 8),
+                                child: NewsCard(),
+                              ),
                           ],
                         ),
                       ),
@@ -148,7 +146,17 @@ class _HomeViewState extends State<HomeView> {
           AppImages.imglogoTixBoom,
         ),
         GestureDetector(
-          onTap: () {},
+          onDoubleTap: () {
+            context.read<LoginProvider>().logout(context);
+          },
+          onTap: () {
+            Navigator.push(
+              context,
+              SlidePageRoute(
+                page: const NotifikasiView(),
+              ),
+            );
+          },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
             decoration: BoxDecoration(
@@ -174,9 +182,10 @@ class _HomeViewState extends State<HomeView> {
         CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
-            aspectRatio: 18 / 9,
+            aspectRatio: 21 / 9,
             autoPlayInterval: const Duration(seconds: 4),
-            viewportFraction: 1,
+            // viewportFraction: 0.7,
+            padEnds: false,
             onPageChanged: (index, reason) {
               setState(() {
                 currentIndexKonser = index;

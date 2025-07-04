@@ -1,8 +1,8 @@
 import 'package:tixboom/app/extensions.dart';
 
-import '../../../commons.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/custom_text_form_field.dart';
+import '../../commons.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_text_form_field.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});

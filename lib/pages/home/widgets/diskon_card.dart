@@ -57,23 +57,30 @@ class DiskonCard extends StatelessWidget {
                     ),
                   ),
                   kGap10,
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.black),
-                      color: AppColors.lavender,
-                      borderRadius: kRadius6,
-                      boxShadow: const [
-                        BoxShadow(
-                          offset: extraSmallShadow,
-                        )
-                      ],
-                    ),
-                    child: Text(
-                      'Salin',
-                      style: AppStyles.comfortaa11Bold.copyWith(
-                        color: const Color(0xffFFF8E8),
+                  InkWell(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Kode berhasil disalin!')),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 7),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.black),
+                        color: AppColors.lavender,
+                        borderRadius: kRadius6,
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: extraSmallShadow,
+                          )
+                        ],
+                      ),
+                      child: Text(
+                        'Salin',
+                        style: AppStyles.comfortaa11Bold.copyWith(
+                          color: const Color(0xffFFF8E8),
+                        ),
                       ),
                     ),
                   ),
@@ -91,7 +98,7 @@ class DiskonCard extends StatelessWidget {
         // Kiri
         Positioned(
           top: 60,
-          left: 3, // Nilai tetap
+          left: 3.45, // Nilai tetap
           bottom: 60,
           child: Container(
             width: 15,

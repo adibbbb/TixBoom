@@ -2,13 +2,13 @@ import 'package:provider/provider.dart';
 import 'package:tixboom/app/finite_state.dart';
 import 'package:tixboom/provider/login_provider.dart';
 
-import '../../../app/custom_transition.dart';
-import '../../../commons.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/custom_text_form_field.dart';
-import '../../../app/extensions.dart';
+import '../../app/custom_transition.dart';
+import '../../commons.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_text_form_field.dart';
+import '../../app/extensions.dart';
 
-import '../sign_up/sign_up_view.dart';
+import '../register/sign_up_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

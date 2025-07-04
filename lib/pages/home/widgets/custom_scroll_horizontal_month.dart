@@ -80,8 +80,9 @@ class _CustomScrollHorizontalMonthState
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color:
-                            isSelected ? AppColors.magenta : AppColors.lavender,
+                            isSelected ? AppColors.lavender : AppColors.white,
                         borderRadius: BorderRadius.circular(6),
+                        border: Border.all(color: AppColors.black),
                         boxShadow: const [
                           BoxShadow(offset: extraSmallShadow),
                         ],
@@ -89,7 +90,7 @@ class _CustomScrollHorizontalMonthState
                       child: Text(
                         months[index]["name"],
                         style: AppStyles.comfortaa12Bold.copyWith(
-                          color: AppColors.white,
+                          color: isSelected ? AppColors.white : AppColors.black,
                         ),
                       ),
                     ),

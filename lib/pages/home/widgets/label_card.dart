@@ -1,10 +1,11 @@
 import '../../../commons.dart';
 
-Container eventLabel(
-    {required String title,
-    TextStyle? textStyle = AppStyles.comfortaa10Bold,
-    Color? bgColor = AppColors.golden,
-    EdgeInsets? padding = kPadd6}) {
+Container eventLabel({
+  required String title,
+  TextStyle? textStyle = AppStyles.comfortaa10Bold,
+  Color? bgColor = AppColors.golden,
+  EdgeInsets? padding = kPadd6,
+}) {
   return Container(
     padding: padding,
     decoration: BoxDecoration(
@@ -13,14 +14,15 @@ Container eventLabel(
       boxShadow: const [
         BoxShadow(
           offset: Offset(2, 2),
-        )
+        ),
       ],
     ),
-    child: Flexible(
-      child: Text(
-        title,
-        style: textStyle,
-      ),
+    child: Text(
+      title,
+      style: textStyle,
+      overflow: TextOverflow.ellipsis,
+      maxLines: 1,
+      softWrap: false,
     ),
   );
 }
