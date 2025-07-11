@@ -1,4 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
+
 import '../../../commons.dart';
+
 import 'label_card.dart';
 
 class NewsCard extends StatelessWidget {
@@ -24,13 +27,24 @@ class NewsCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // ClipRRect(
+          //   borderRadius: kRadius6,
+          //   child: Image.asset(
+          //     height: 65,
+          //     width: 65,
+          //     AppImages.imgDummyPhoto,
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
           ClipRRect(
             borderRadius: kRadius6,
-            child: Image.asset(
+            child: CachedNetworkImage(
               height: 65,
               width: 65,
-              AppImages.imgDummyPhoto,
+              imageUrl:
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7b2U3EP1m40dqvB6OvTLVEzAebvDeXcQ_zQ&s',
               fit: BoxFit.cover,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
           kGap8,
@@ -47,9 +61,9 @@ class NewsCard extends StatelessWidget {
                   children: [
                     const Expanded(
                       child: Text(
+                        maxLines: 2,
                         'Juicy Luicy bakal manggung lagi di batam untuk ke 3 kalinya',
                         style: AppStyles.comfortaa10Bold,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),

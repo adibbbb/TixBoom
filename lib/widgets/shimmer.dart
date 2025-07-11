@@ -36,8 +36,6 @@ class ShimmerListWidget extends StatelessWidget {
                   ShimmerBox(height: 30, width: 90),
                   kGap8,
                   ShimmerBox(height: 30, width: 90),
-                  kGap8,
-                  ShimmerBox(height: 30, width: 60),
                 ],
               ),
               kGap20,

@@ -50,6 +50,7 @@ const kPadd6 = EdgeInsets.all(6);
 const kPadd8 = EdgeInsets.all(8);
 const kPadd10 = EdgeInsets.all(10);
 const kPadd12 = EdgeInsets.all(12);
+const kPadd14 = EdgeInsets.all(14);
 const kPadd16 = EdgeInsets.all(16);
 
 // Drop Shadow

@@ -2,14 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:tixboom/app/custom_transition.dart';
+import '../../../app/custom_transition.dart';
 
 import '../../../app/extensions.dart';
 import '../../../commons.dart';
 import '../../../provider/login_provider.dart';
 import '../../../widgets/custom_text_form_field.dart';
 import '../../notifikasi/notifikasi_view.dart';
-import '../widgets/custom_scroll_horizontal_month.dart';
+import '../../../widgets/custom_scroll_horizontal_month.dart';
 import '../widgets/diskon_card.dart';
 import '../widgets/konser_card.dart';
 import '../widgets/label_card.dart';
@@ -37,6 +37,9 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int currentIndexBanner = 0;
   int currentIndexKonser = 0;
+
+  int myIndex = 0;
+  // final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -46,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+            padding: const EdgeInsets.fromLTRB(22, 10, 22, 0),
             child: Column(
               children: [
                 _appBar(),
@@ -68,6 +71,7 @@ class _HomeViewState extends State<HomeView> {
                   child: CustomScrollHorizontalMonth(
                     monthContents: [
                       SingleChildScrollView(
+                        padding: EdgeInsets.zero,
                         child: Column(
                           children: [
                             _heroBanner(),
@@ -182,9 +186,8 @@ class _HomeViewState extends State<HomeView> {
         CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
-            aspectRatio: 21 / 9,
+            aspectRatio: 16 / 9,
             autoPlayInterval: const Duration(seconds: 4),
-            // viewportFraction: 0.7,
             padEnds: false,
             onPageChanged: (index, reason) {
               setState(() {
@@ -202,27 +205,21 @@ class _HomeViewState extends State<HomeView> {
                   for (int j = 0; j < 2; j++)
                     if (i * 2 + j < konserCards.length)
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: konserCards[i * 2 + j],
-                        ),
+                        child: konserCards[i * 2 + j],
                       ),
                 ],
               ),
           ],
         ),
         kGap12,
-        Align(
-          alignment: Alignment.center,
-          child: AnimatedSmoothIndicator(
-            activeIndex: currentIndexKonser,
-            count: (konserCards.length / 3).ceil(),
-            effect: const ScrollingDotsEffect(
-              dotWidth: 5,
-              dotHeight: 5,
-              activeDotColor: AppColors.magenta,
-              dotColor: AppColors.grey,
-            ),
+        AnimatedSmoothIndicator(
+          activeIndex: currentIndexKonser,
+          count: (konserCards.length / 3).ceil(),
+          effect: const ScrollingDotsEffect(
+            dotWidth: 5,
+            dotHeight: 5,
+            activeDotColor: AppColors.magenta,
+            dotColor: AppColors.grey,
           ),
         ),
       ],

@@ -1,3 +1,6 @@
+import 'package:flutter_svg/svg.dart';
+import 'package:tixboom/app/date_formatting.dart';
+
 import '../../commons.dart';
 import '../home/widgets/label_card.dart';
 import 'widgets/notifikasi_card.dart';
@@ -32,9 +35,10 @@ class _NotifikasiViewState extends State<NotifikasiView> {
               icon: Icons.event_note_outlined,
               isRead: true,
             ),
-          const NotificationCard(
+          NotificationCard(
             title: 'Your Order Has Complete',
-            date: '09 September 2025 | 13:32 WIB',
+            date:
+                '${formatDateString(DateTime.now().toString(), toFormat: 'dd MMMM yyyy')} | 13:32 WIB',
             icon: Icons.shopping_bag_outlined,
             iconColor: AppColors.mint,
             isRead: true,
@@ -71,6 +75,20 @@ class _NotifikasiViewState extends State<NotifikasiView> {
       backgroundColor: AppColors.brokenWhite,
       centerTitle: true,
       title: eventLabel(title: 'Notifikasi'),
+      leadingWidth: 60,
+      leading: GestureDetector(
+        onTap: () => Navigator.pop(context),
+        child: Container(
+          margin: kPadd14,
+          padding: kPadd6,
+          decoration: BoxDecoration(
+              borderRadius: kRadius6,
+              border: Border.all(color: AppColors.black),
+              color: AppColors.lavender,
+              boxShadow: const [BoxShadow(offset: Offset(3, 3))]),
+          child: SvgPicture.asset(AppIcons.icBack),
+        ),
+      ),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1.0),
         child: Container(

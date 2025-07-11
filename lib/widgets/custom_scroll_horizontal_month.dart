@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-import '../../../commons.dart';
+import '../commons.dart';
 
 class CustomScrollHorizontalMonth extends StatefulWidget {
   final List<Widget> monthContents;
@@ -39,20 +39,21 @@ class _CustomScrollHorizontalMonthState
     final int currentYear = DateTime.now().year;
 
     // Hitung semua bulan
-    List<Map<String, dynamic>> months = List.generate(
-      12,
-      (index) {
-        final int month = (currentMonth + index - 1) % 12 + 1;
-        final int year = currentYear + (currentMonth + index - 1) ~/ 12;
-        return {
-          "name": index == 0
-              ? "Bulan Ini"
-              : DateFormat.MMMM().format(DateTime(year, month)),
-          "month": month,
-          "year": year,
-        };
-      },
-    );
+    List<Map<String, dynamic>> months = [];
+    for (int i = 0; i < 12; i++) {
+      final int month = currentMonth + i;
+      final int year = currentYear;
+
+      if (month > 12) break; // Stop jika bulan lebih dari Desember
+
+      months.add({
+        "name": i == 0
+            ? "Bulan Ini"
+            : DateFormat.MMMM().format(DateTime(year, month)),
+        "month": month,
+        "year": year,
+      });
+    }
 
     return Column(
       children: [
@@ -79,10 +80,10 @@ class _CustomScrollHorizontalMonthState
                       alignment: Alignment.center,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color:
-                            isSelected ? AppColors.lavender : AppColors.white,
                         borderRadius: BorderRadius.circular(6),
                         border: Border.all(color: AppColors.black),
+                        color:
+                            isSelected ? AppColors.lavender : AppColors.white,
                         boxShadow: const [
                           BoxShadow(offset: extraSmallShadow),
                         ],

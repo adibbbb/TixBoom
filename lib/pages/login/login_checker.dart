@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../commons.dart';
 import '../../provider/login_provider.dart';
 import '../../widgets/shimmer.dart';
-import '../home/pages/home_view.dart';
+import '../home/pages/navigation.dart';
 import 'sign_in_view.dart';
 
 class LoginChecker extends StatefulWidget {
@@ -44,7 +44,7 @@ class _LoginCheckerState extends State<LoginChecker> {
     }
 
     if (prov.token != null && (prov.token ?? '').isNotEmpty) {
-      return const HomeView();
+      return const Navigation();
     } else {
       return const LoginView();
     }
