@@ -2,7 +2,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../commons.dart';
 import '../../my_tiket/my_tiket_view.dart';
-import '../../profile/profile_view.dart';
+import '../../profile/pages/profile_view.dart';
 import 'home_view.dart';
 
 class Navigation extends StatefulWidget {

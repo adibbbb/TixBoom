@@ -16,4 +16,8 @@ class AppIcons {
   static const String icHome = '$iconPath/ic-home.svg';
   static const String icMyticket = '$iconPath/ic-mytiket.svg';
   static const String icProfile = '$iconPath/ic-profile.svg';
+  static const String icWallet = '$iconPath/ic-wallet.svg';
+  static const String icShieldSearch = '$iconPath/ic-shield-search.svg';
+  static const String icFlagIndonesian = '$iconPath/ic-indonesia.svg';
+  static const String icFlagEnglish = '$iconPath/ic-english.svg';
 }

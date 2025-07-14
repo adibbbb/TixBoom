@@ -74,6 +74,7 @@ class CustomTextFormField extends StatelessWidget {
           SpacerHeight(spacer),
         ],
         Container(
+          height: height,
           decoration: _decoration,
           child: TextFormField(
             focusNode: focusNode,
@@ -217,7 +218,7 @@ get _decoration => BoxDecoration(
       boxShadow: const [
         BoxShadow(
           color: AppColors.black,
-          offset: smallShadow,
+          offset: mediumShadow,
         ),
       ],
       borderRadius: kRadius8,

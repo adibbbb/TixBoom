@@ -84,6 +84,12 @@ class AppStyles {
     color: Colors.black,
   );
 
+  static const TextStyle comfortaa16Bold = TextStyle(
+    fontWeight: WeightsApp.bold,
+    fontSize: 16,
+    color: Colors.black,
+  );
+
   static const TextStyle comfortaa24Bold = TextStyle(
     fontWeight: WeightsApp.bold,
     fontSize: 24,

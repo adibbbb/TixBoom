@@ -35,7 +35,7 @@ class CustomButton extends StatelessWidget {
           color: AppColors.black,
         ),
         boxShadow: const [
-          BoxShadow(offset: smallShadow),
+          BoxShadow(offset: mediumShadow),
         ],
       ),
       child: TextButton(
@@ -88,7 +88,7 @@ class CustomButtonIcon extends StatelessWidget {
               color: AppColors.black,
             ),
             boxShadow: const [
-              BoxShadow(offset: smallShadow),
+              BoxShadow(offset: mediumShadow),
             ],
           ),
           child: Center(

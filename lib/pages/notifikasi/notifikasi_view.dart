@@ -1,7 +1,6 @@
-import 'package:flutter_svg/svg.dart';
-import 'package:tixboom/app/date_formatting.dart';
-
+import '../../app/date_formatting.dart';
 import '../../commons.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/widgets/label_card.dart';
 import 'widgets/notifikasi_card.dart';
 
@@ -16,7 +15,10 @@ class _NotifikasiViewState extends State<NotifikasiView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
+      appBar: const CustomAppBar(
+        padding: kPadd6,
+        title: 'Notifikasi',
+      ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 8),
         children: [
@@ -66,35 +68,6 @@ class _NotifikasiViewState extends State<NotifikasiView> {
             iconColor: AppColors.mint,
           ),
         ],
-      ),
-    );
-  }
-
-  AppBar _appBar() {
-    return AppBar(
-      backgroundColor: AppColors.brokenWhite,
-      centerTitle: true,
-      title: eventLabel(title: 'Notifikasi'),
-      leadingWidth: 60,
-      leading: GestureDetector(
-        onTap: () => Navigator.pop(context),
-        child: Container(
-          margin: kPadd14,
-          padding: kPadd6,
-          decoration: BoxDecoration(
-              borderRadius: kRadius6,
-              border: Border.all(color: AppColors.black),
-              color: AppColors.lavender,
-              boxShadow: const [BoxShadow(offset: Offset(3, 3))]),
-          child: SvgPicture.asset(AppIcons.icBack),
-        ),
-      ),
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1.0),
-        child: Container(
-          color: const Color(0xff333333).withOpacity(0.5),
-          height: 1.0,
-        ),
       ),
     );
   }

@@ -1,28 +1,35 @@
 import '../../../commons.dart';
 
-Container eventLabel({
+GestureDetector eventLabel({
   required String title,
   TextStyle? textStyle = AppStyles.comfortaa10Bold,
   Color? bgColor = AppColors.golden,
+  Color? textColor = AppColors.black,
   EdgeInsets? padding = kPadd6,
+  final void Function()? onTap,
 }) {
-  return Container(
-    padding: padding,
-    decoration: BoxDecoration(
-      color: bgColor,
-      borderRadius: kRadius4,
-      boxShadow: const [
-        BoxShadow(
-          offset: Offset(2, 2),
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      padding: padding ?? kPadd6,
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: kRadius4,
+        boxShadow: const [
+          BoxShadow(
+            offset: Offset(2, 2),
+          ),
+        ],
+      ),
+      child: Text(
+        title,
+        style: (textStyle ?? AppStyles.comfortaa10Bold).copyWith(
+          color: textColor ?? AppColors.white,
         ),
-      ],
-    ),
-    child: Text(
-      title,
-      style: textStyle,
-      overflow: TextOverflow.ellipsis,
-      maxLines: 1,
-      softWrap: false,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
+        softWrap: false,
+      ),
     ),
   );
 }

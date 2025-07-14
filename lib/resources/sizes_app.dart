@@ -10,6 +10,7 @@ const kGap2 = Gap(2);
 const kGap4 = Gap(4);
 const kGap5 = Gap(5);
 const kGap6 = Gap(6);
+const kGap7 = Gap(7);
 const kGap8 = Gap(8);
 const kGap9 = Gap(9);
 const kGap10 = Gap(10);
@@ -52,8 +53,14 @@ const kPadd10 = EdgeInsets.all(10);
 const kPadd12 = EdgeInsets.all(12);
 const kPadd14 = EdgeInsets.all(14);
 const kPadd16 = EdgeInsets.all(16);
+const kPadd18 = EdgeInsets.all(18);
+const kPadd19 = EdgeInsets.all(19);
+const kPadd20 = EdgeInsets.all(20);
+const kPadd21 = EdgeInsets.all(21);
+const kPadd22 = EdgeInsets.all(22);
 
 // Drop Shadow
 const bigShadow = Offset(10, 10);
-const smallShadow = Offset(5, 5);
+const mediumShadow = Offset(5, 5);
+const smallShadow = Offset(4, 4);
 const extraSmallShadow = Offset(3, 3);
