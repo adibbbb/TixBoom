@@ -13,6 +13,7 @@ GestureDetector eventLabel({
     child: Container(
       padding: padding ?? kPadd6,
       decoration: BoxDecoration(
+        border: Border.all(),
         color: bgColor,
         borderRadius: kRadius4,
         boxShadow: const [

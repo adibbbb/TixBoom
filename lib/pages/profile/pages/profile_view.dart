@@ -4,6 +4,7 @@ import '../../../widgets/custom_circle_avatar.dart';
 import '../../home/widgets/label_card.dart';
 import '../section/profile_ganti_bahasa_view.dart';
 import '../section/profile_settings_view.dart';
+import '../section/profile_tentang_tixboom_view.dart';
 import '../widget/profile_menu_widget.dart';
 import 'edit_profile_view.dart';
 
@@ -46,9 +47,17 @@ class _ProfileViewState extends State<ProfileView> {
                         SlidePageRoute(page: const ProfileGantiBahasaView()));
                   },
                 ),
-                const ProfileMenuWidget(
+                ProfileMenuWidget(
                   iconPath: AppIcons.icShieldSearch,
                   title: 'Tentang Tixboom',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      SlidePageRoute(
+                        page: const ProfileTentangTixboomView(),
+                      ),
+                    );
+                  },
                 ),
                 ProfileMenuWidget(
                   icon: Icons.settings_outlined,

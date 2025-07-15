@@ -114,8 +114,11 @@ class _CustomScrollHorizontalMonthState
               child: widget.monthContents.isNotEmpty &&
                       selectedIndexValue < widget.monthContents.length
                   ? widget.monthContents[selectedIndexValue]
-                  : const Center(
-                      child: Text('Konten tidak tersedia'),
+                  : Padding(
+                      padding: const EdgeInsets.fromLTRB(40, 0, 40, 100),
+                      child: Image.asset(
+                        AppImages.imgNoContent,
+                      ),
                     ),
             );
           },

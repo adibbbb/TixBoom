@@ -6,6 +6,8 @@ class AppImages {
   static const String imgDummyPhoto = '$imagePath/img-dummy-photo.png';
   static const String imgDummyPhoto2 = '$imagePath/img-dummy-photo-2.png';
   static const String imgBanner = '$imagePath/img-banner.png';
+  static const String imgNoItem = '$imagePath/img-no-item.png';
+  static const String imgNoContent = '$imagePath/img-no-content.png';
 }
 
 class AppIcons {
@@ -20,4 +22,10 @@ class AppIcons {
   static const String icShieldSearch = '$iconPath/ic-shield-search.svg';
   static const String icFlagIndonesian = '$iconPath/ic-indonesia.svg';
   static const String icFlagEnglish = '$iconPath/ic-english.svg';
+  static const String icFileSecurity = '$iconPath/ic-file-security.svg';
+  static const String icFileInfo = '$iconPath/ic-file-info.svg';
+  static const String icNotificationSettings =
+      '$iconPath/ic-notification-settings.svg';
+  static const String icTrashBin = '$iconPath/ic-trash-bin.svg';
+  static const String icLogout = '$iconPath/ic-logout.svg';
 }

@@ -27,22 +27,13 @@ class NewsCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // ClipRRect(
-          //   borderRadius: kRadius6,
-          //   child: Image.asset(
-          //     height: 65,
-          //     width: 65,
-          //     AppImages.imgDummyPhoto,
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
           ClipRRect(
             borderRadius: kRadius6,
             child: CachedNetworkImage(
               height: 65,
               width: 65,
               imageUrl:
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7b2U3EP1m40dqvB6OvTLVEzAebvDeXcQ_zQ&s',
+                  "https://cdn.rri.co.id/berita/96/images/1665928337-channels4_profile.jpg",
               fit: BoxFit.cover,
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),

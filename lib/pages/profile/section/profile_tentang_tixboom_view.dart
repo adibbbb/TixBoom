@@ -2,37 +2,33 @@ import '../../../commons.dart';
 import '../../../widgets/custom_app_bar.dart';
 import '../widget/profile_menu_widget.dart';
 
-class ProfileSettingsView extends StatelessWidget {
-  const ProfileSettingsView({super.key});
+class ProfileTentangTixboomView extends StatelessWidget {
+  const ProfileTentangTixboomView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Pengaturan'),
+      appBar: const CustomAppBar(
+        title: 'Tentang Tixboom',
+      ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
         children: const [
           ProfileMenuWidget(
-            icon: Icons.lock,
+            icon: Icons.info,
             iconColor: AppColors.black,
-            title: 'Ganti Kata Sandi',
+            title: 'Profile Tixboom',
           ),
           ProfileMenuWidget(
-            iconPath: AppIcons.icNotificationSettings,
+            iconPath: AppIcons.icFileSecurity,
             iconColor: AppColors.black,
-            title: 'Notifikasi',
+            title: 'Kebijakan Privasi',
           ),
           ProfileMenuWidget(
-            iconPath: AppIcons.icTrashBin,
+            iconPath: AppIcons.icFileInfo,
             iconColor: AppColors.black,
-            title: 'Hapus Akun',
-          ),
-          ProfileMenuWidget(
-            iconPath: AppIcons.icLogout,
-            iconColor: AppColors.magenta,
-            textColor: AppColors.magenta,
-            title: 'Keluar',
+            title: 'Syarat & Ketentuan',
           ),
         ],
       ),
